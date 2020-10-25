@@ -13,11 +13,11 @@ fun readFile(path: String): String {
 }
 
 inline fun <reified T> parse(gson: Gson, path: String): T {
-    val file = ClassLoader.getSystemResource(path).readText()
+    val file = readFile(path)
     return gson.fromJson(file, object : TypeToken<T>() {}.type)
 }
 
 inline fun <reified T> Gson.parseFrom(path: String): T {
-    val file = this.javaClass.classLoader.getResource(path).readText()
+    val file = readFile(path)
     return this.fromJson(file, object : TypeToken<T>() {}.type)
 }
