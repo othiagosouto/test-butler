@@ -1,5 +1,6 @@
-package com.github.othiagosouto.file_butler
+package com.github.othiagosouto.file_butler.gson
 
+import com.github.othiagosouto.file_butler.readFile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
