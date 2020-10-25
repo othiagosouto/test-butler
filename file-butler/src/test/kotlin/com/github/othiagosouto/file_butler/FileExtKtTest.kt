@@ -21,24 +21,24 @@ class FileExtKtTest {
 
     @Test
     fun `should return person from json`() {
-        val content: Person = parse(Gson(), "person.json")
+        val content: Person = parse(Gson(), "person")
         assertThat(content).isEqualTo(Person("Thiago", "Santos", 29))
     }
 
     @Test(expected = FileNotFoundException::class)
     fun `should throw FileNotFoundException when json path doest not exist`() {
-        parse<Person>(Gson(), "perso2n.json")
+        parse<Person>(Gson(), "perso2n")
     }
 
     @Test
     fun `gson parseFrom should parse to expected object`() {
-        val content: Person = Gson().parseFrom("person.json")
+        val content: Person = Gson().parseFrom("person")
         assertThat(content).isEqualTo(Person("Thiago", "Santos", 29))
     }
 
     @Test(expected = FileNotFoundException::class)
     fun `gson parseFrom should throw FileNotFoundException when json path doest not exist`() {
-        Gson().parseFrom<Person>("perso2n.json")
+        Gson().parseFrom<Person>("perso2n")
     }
 }
 
