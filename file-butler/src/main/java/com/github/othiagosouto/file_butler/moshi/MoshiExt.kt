@@ -11,12 +11,7 @@ inline fun <reified T> parse(moshi: Moshi, path: String): T {
     return adapter.fromJson(file)!!
 }
 
-inline fun <reified T: Any> Moshi.parseFrom(path: String): T {
-    val file = readFile("$path.json")
-    val adapter: JsonAdapter<T> = this.adapter(T::class.java)
-    return adapter.fromJson(file)!!
-}
-
+inline fun <reified T : Any> Moshi.parseFrom(path: String): T = parse(this, path)
 
 inline fun <reified T> Moshi.parseListFrom(path: String): List<T> {
     val file = readFile("$path.json")
@@ -24,6 +19,7 @@ inline fun <reified T> Moshi.parseListFrom(path: String): List<T> {
         Types.newParameterizedType(
             MutableList::class.java,
             T::class.java
-        ))
+        )
+    )
     return adapter.fromJson(file)!!
 }

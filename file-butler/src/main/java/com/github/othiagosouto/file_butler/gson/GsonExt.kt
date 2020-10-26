@@ -9,7 +9,4 @@ inline fun <reified T> parse(gson: Gson, path: String): T {
     return gson.fromJson(file, object : TypeToken<T>() {}.type)
 }
 
-inline fun <reified T> Gson.parseFrom(path: String): T {
-    val file = readFile("$path.json")
-    return this.fromJson(file, object : TypeToken<T>() {}.type)
-}
+inline fun <reified T> Gson.parseFrom(path: String): T = parse(this, path)
