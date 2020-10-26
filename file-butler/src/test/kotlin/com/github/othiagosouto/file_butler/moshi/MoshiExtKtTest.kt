@@ -59,8 +59,26 @@ class MoshiExtKtTest {
     }
 
     @Test
-    fun `moshi parseFrom should parse list`() {
+    fun `moshi parseListFrom should parse list`() {
         val content: List<PersonMoshi> = moshi.parseListFrom("persons")
+        assertThat(content).isEqualTo(
+            listOf(
+                PersonMoshi(
+                    "Thiago",
+                    "Santos",
+                    29
+                ), PersonMoshi(
+                    "Souto",
+                    "Silva",
+                    45
+                )
+            )
+        )
+    }
+
+    @Test
+    fun `moshi parseList should parse list`() {
+        val content: List<PersonMoshi> = parseList(moshi, "persons")
         assertThat(content).isEqualTo(
             listOf(
                 PersonMoshi(
