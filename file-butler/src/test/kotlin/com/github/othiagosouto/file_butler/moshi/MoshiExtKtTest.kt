@@ -58,6 +58,24 @@ class MoshiExtKtTest {
         )
     }
 
+    @Test
+    fun `moshi parseFrom should parse list`() {
+        val content: List<PersonMoshi> = moshi.parseListFrom("persons")
+        assertThat(content).isEqualTo(
+            listOf(
+                PersonMoshi(
+                    "Thiago",
+                    "Santos",
+                    29
+                ), PersonMoshi(
+                    "Souto",
+                    "Silva",
+                    45
+                )
+            )
+        )
+    }
+
     @Test(expected = FileNotFoundException::class)
     fun `moshi parseFrom should throw FileNotFoundException when json path doest not exist`() {
         moshi.parseFrom<PersonMoshi>("perso2n")
