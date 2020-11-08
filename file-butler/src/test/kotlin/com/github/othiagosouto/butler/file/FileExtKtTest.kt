@@ -1,6 +1,5 @@
 package com.github.othiagosouto.butler.file;
 
-import com.github.othiagosouto.butler.file.readFile
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import java.io.FileNotFoundException
