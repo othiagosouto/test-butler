@@ -1,4 +1,4 @@
-package com.github.othiagosouto.file_butler
+package com.github.othiagosouto.butler.file.gson
 
 import com.google.gson.annotations.SerializedName
 

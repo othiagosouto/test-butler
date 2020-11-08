@@ -1,6 +1,5 @@
-package com.github.othiagosouto.file_butler.moshi
+package com.github.othiagosouto.butler.file.moshi
 
-import com.github.othiagosouto.file_butler.PersonMoshi
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
@@ -78,7 +77,8 @@ class MoshiExtKtTest {
 
     @Test
     fun `moshi parseList should parse list`() {
-        val content: List<PersonMoshi> = parseList(moshi, "persons")
+        val content: List<PersonMoshi> =
+            parseList(moshi, "persons")
         assertThat(content).isEqualTo(
             listOf(
                 PersonMoshi(

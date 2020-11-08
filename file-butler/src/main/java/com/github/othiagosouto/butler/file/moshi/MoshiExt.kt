@@ -1,6 +1,6 @@
-package com.github.othiagosouto.file_butler.moshi
+package com.github.othiagosouto.butler.file.moshi
 
-import com.github.othiagosouto.file_butler.readFile
+import com.github.othiagosouto.butler.file.readFile
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -11,7 +11,8 @@ inline fun <reified T> parse(moshi: Moshi, path: String): T {
     return adapter.fromJson(file)!!
 }
 
-inline fun <reified T : Any> Moshi.parseFrom(path: String): T = parse(this, path)
+inline fun <reified T : Any> Moshi.parseFrom(path: String): T =
+    parse(this, path)
 
 inline fun <reified T> parseList(moshi: Moshi, path: String): List<T> {
     val file = readFile("$path.json")
@@ -24,4 +25,5 @@ inline fun <reified T> parseList(moshi: Moshi, path: String): List<T> {
     return adapter.fromJson(file)!!
 }
 
-inline fun <reified T> Moshi.parseListFrom(path: String): List<T> = parseList(this, path)
+inline fun <reified T> Moshi.parseListFrom(path: String): List<T> =
+    parseList(this, path)

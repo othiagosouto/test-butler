@@ -1,6 +1,5 @@
-package com.github.othiagosouto.file_butler.gson
+package com.github.othiagosouto.butler.file.gson
 
-import com.github.othiagosouto.file_butler.Person
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException

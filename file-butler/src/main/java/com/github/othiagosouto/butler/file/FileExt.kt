@@ -1,4 +1,4 @@
-package com.github.othiagosouto.file_butler
+package com.github.othiagosouto.butler.file
 
 import java.io.FileNotFoundException
 import java.net.URL
