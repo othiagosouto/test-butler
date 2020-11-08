@@ -1,0 +1,54 @@
+apply plugin: "java-library"
+apply plugin: "kotlin"
+apply plugin: "kotlin-kapt"
+apply plugin: "maven-publish"
+
+dependencies {
+    def gson = "com.google.code.gson:gson:2.8.6"
+    def moshi = "com.squareup.moshi:moshi:1.11.0"
+    def moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+
+    implementation(Deps.core.kotlin)
+    implementation(gson)
+    implementation(moshi)
+    kapt(moshCodeGen)
+
+    testImplementation(Deps.testing.truth)
+    testImplementation(Deps.testing.jUnit)
+    kaptTest(moshCodeGen)
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = "File Butler"
+                description = 'Library to provide some methods to handle file/json and improve TDD experience'
+                url = 'https://github.com/othiagosouto/test-butler/'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'othiagosouto'
+                        name = 'Thiago Souto Silva de Barros Santos'
+                        email = 'soutosss@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/othiagosouto/test-butler.git'
+                    developerConnection = 'scm:git:ssh://github.com:othiagosouto/test-butler.git'
+                    url = 'https://github.com/othiagosouto/test-butler/tree/main'
+                }
+            }
+
+            groupId = "com.github.othiagosouto"
+            artifactId = "file-butler"
+            version = "0.1.0-SNAPSHOT"
+
+            from components.java
+        }
+    }
+}
