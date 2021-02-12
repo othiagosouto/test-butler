@@ -1,4 +1,4 @@
-package com.github.othiagosouto.butler.file.moshi
+package dev.thiagosouto.butler.file.moshi
 
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.JsonDataException
@@ -18,8 +18,7 @@ class MoshiExtKtTest {
 
     @Test
     fun `should return person from json`() {
-        val content: PersonMoshi =
-            parse(moshi, "person")
+        val content: PersonMoshi = parse(moshi, "person")
         assertThat(content).isEqualTo(
             PersonMoshi(
                 "Thiago",

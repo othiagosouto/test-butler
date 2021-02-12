@@ -1,4 +1,4 @@
-package com.github.othiagosouto.butler.file.gson
+package dev.thiagosouto.butler.file.gson
 
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson

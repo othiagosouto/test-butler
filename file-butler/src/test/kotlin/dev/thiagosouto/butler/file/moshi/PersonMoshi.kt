@@ -1,4 +1,4 @@
-package com.github.othiagosouto.butler.file.moshi
+package dev.thiagosouto.butler.file.moshi
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
