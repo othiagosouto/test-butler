@@ -1,54 +1,92 @@
-apply plugin: "java-library"
-apply plugin: "kotlin"
-apply plugin: "kotlin-kapt"
-apply plugin: "maven-publish"
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+    id "org.jetbrains.dokka"
+    id "maven"
+    id "signing"
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
 
 dependencies {
-    def gson = "com.google.code.gson:gson:2.8.6"
-    def moshi = "com.squareup.moshi:moshi:1.11.0"
-    def moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
-
     implementation(Deps.core.kotlin)
-    implementation(gson)
-    implementation(moshi)
-    kapt(moshCodeGen)
+    implementation(Deps.utils.gson)
+    implementation(Deps.utils.moshi)
+    kapt(Deps.utils.moshCodeGen)
 
     testImplementation(Deps.testing.truth)
     testImplementation(Deps.testing.jUnit)
     kaptTest(moshCodeGen)
+    dokkaHtmlPlugin(Deps.utils.dokka)
 }
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            pom {
-                name = "File Butler"
-                description = 'Library to provide some methods to handle file/json and improve TDD experience'
-                url = 'https://github.com/othiagosouto/test-butler/'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'othiagosouto'
-                        name = 'Thiago Souto Silva de Barros Santos'
-                        email = 'soutosss@gmail.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git://github.com/othiagosouto/test-butler.git'
-                    developerConnection = 'scm:git:ssh://github.com:othiagosouto/test-butler.git'
-                    url = 'https://github.com/othiagosouto/test-butler/tree/main'
-                }
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+    main.java.srcDirs += 'src/main/java'
+}
+
+signing {
+    sign configurations.archives
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+group = GROUP
+version = VERSION_NAME
+
+ossrhUsername=System.env.SONATYPE_NEXUS_USERNAME
+ossrhPassword=System.env.SONATYPE_NEXUS_PASSWORD
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
 
-            groupId = "com.github.othiagosouto"
-            artifactId = "file-butler"
-            version = "0.1.0-SNAPSHOT"
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
 
-            from components.java
+            pom.project {
+                name 'file-butler'
+                packaging 'jar'
+                description 'A library to help apply tdd through help functions'
+                url 'https://github.com/othiagosouto/test-butler'
+
+                scm {
+                    connection 'scm:git:git://github.com/othiagosouto/test-butler.git/'
+                    developerConnection 'scm:git:ssh://github.com:othiagosouto/test-butler.git'
+                    url 'https://github.com/othiagosouto/test-butler'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'othiagosouto'
+                        name 'Thiago Souto silva de barros Santos'
+                        email 'soutosss@gmail.com'
+                    }
+                }
+            }
         }
     }
 }
