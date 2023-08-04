@@ -1,0 +1,39 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  static_analysis:
+    name: "Static analysis step"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Run detekt & detekt ktlint wrapper
+        run: ./gradlew clean detekt
+
+  unit_testing:
+    name: "Tests step"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Run unit tests
+        run: ./gradlew clean test
