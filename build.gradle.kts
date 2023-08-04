@@ -3,7 +3,6 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
     dependencies {
         classpath(Deps.core.androidGradlePlugin)
@@ -32,4 +31,3 @@ plugins{
 task<Delete>("clean") {
     delete(rootProject.buildDir)
 }
-
