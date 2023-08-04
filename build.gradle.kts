@@ -5,7 +5,6 @@ buildscript {
         google()
     }
     dependencies {
-        classpath(Deps.core.androidGradlePlugin)
         classpath(Deps.core.kotlinGradlePlugin)
         classpath(Deps.core.detektPlugin)
         classpath(Deps.utils.dokkaPlugin)
