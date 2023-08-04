@@ -7,12 +7,10 @@ plugins {
 }
 
 task javadocJar(type: Jar) {
-    archiveClassifier = 'javadoc'
     from javadoc
 }
 
 task sourcesJar(type: Jar) {
-    archiveClassifier = 'sources'
     from sourceSets.main.allSource
 }
 
@@ -38,7 +36,7 @@ artifacts {
 }
 
 group = "dev.thiagosouto"
-version = "0.1.8-SNAPSHOT"
+version = "0.1.9-SNAPSHOT"
 
 
 java {
@@ -51,6 +49,7 @@ publishing {
         mavenJava(MavenPublication) {
             from(components.java)
             pom {
+                packaging = "jar"
                 name = "file-butler"
                 description = "A library to support TDD practice "
                 url = "https://github.com/othiagosouto/test-butler"
