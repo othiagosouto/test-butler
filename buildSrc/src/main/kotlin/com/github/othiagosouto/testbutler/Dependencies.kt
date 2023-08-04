@@ -5,14 +5,14 @@ class Test {
 }
 
 class Core {
-    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20"
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
 }
 
 class Utils {
-    val dokka = "org.jetbrains.dokka:kotlin-as-java-plugin:1.4.20"
-    val gson = "com.google.code.gson:gson:2.8.6"
-    val moshi = "com.squareup.moshi:moshi:1.11.0"
-    val moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+    val dokka = "org.jetbrains.dokka:kotlin-as-java-plugin:1.8.10"
+    val gson = "com.google.code.gson:gson:2.10.1"
+    val moshi = "com.squareup.moshi:moshi:1.15.0"
+    val moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
 }
 
 object Deps {

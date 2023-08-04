@@ -1,9 +1,8 @@
 plugins {
-    id 'java-library'
     id 'kotlin'
     id 'kotlin-kapt'
     id "org.jetbrains.dokka"
-    id "maven"
+    id "maven-publish"
     id "signing"
 }
 
@@ -25,7 +24,7 @@ dependencies {
 
     testImplementation(Deps.testing.truth)
     testImplementation(Deps.testing.jUnit)
-    kaptTest(moshCodeGen)
+    kaptTest(Deps.utils.moshCodeGen)
     dokkaHtmlPlugin(Deps.utils.dokka)
 }
 sourceSets {
@@ -41,52 +40,55 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-group = GROUP
-version = VERSION_NAME
+group = "com.github.othiagosouto"
+version = "0.1.5-SNAPSHOT"
 
-ossrhUsername=System.env.SONATYPE_NEXUS_USERNAME
-ossrhPassword=System.env.SONATYPE_NEXUS_PASSWORD
+def ossrhUsername = System.env.SONATYPE_NEXUS_USERNAME
+def ossrhPassword = System.env.SONATYPE_NEXUS_PASSWORD
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            pom.project {
-                name 'file-butler'
-                packaging 'jar'
-                description 'A library to help apply tdd through help functions'
-                url 'https://github.com/othiagosouto/test-butler'
-
-                scm {
-                    connection 'scm:git:git://github.com/othiagosouto/test-butler.git/'
-                    developerConnection 'scm:git:ssh://github.com:othiagosouto/test-butler.git'
-                    url 'https://github.com/othiagosouto/test-butler'
-                }
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = "file-butler"
+                description = "A library to support TDD practice "
+                url = "https://github.com/othiagosouto/test-butler"
 
                 licenses {
                     license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
                     }
                 }
-
                 developers {
                     developer {
-                        id 'othiagosouto'
-                        name 'Thiago Souto silva de barros Santos'
-                        email 'soutosss@gmail.com'
+                        id= "othiagosouto"
+                        name = "Thiago Souto"
+                        email = "thiagosouto@duck.com"
                     }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/othiagosouto/test-butler.git/"
+                    developerConnection = "scm:git:ssh://github.com:othiagosouto/test-butler.git"
+                    url = "https://github.com/othiagosouto/test-butler"
                 }
             }
         }
     }
+
+    repositories {
+        maven {
+            def releasesRepoUrl = layout.buildDirectory.dir("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            def snapshotsRepoUrl = layout.buildDirectory.dir("https://oss.sonatype.org/content/repositories/snapshots/")
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials{
+                username = ossrhUsername
+                password = ossrhPassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
