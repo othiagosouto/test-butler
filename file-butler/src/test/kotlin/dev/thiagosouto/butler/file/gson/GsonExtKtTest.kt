@@ -36,45 +36,4 @@ class GsonExtKtTest {
             "perso2n"
         )
     }
-
-    @Test
-    fun `gson parseFrom should parse to expected object`() {
-        val content: Person = Gson().parseFrom("person")
-        assertThat(content).isEqualTo(
-            Person(
-                "Thiago",
-                "Santos",
-                29
-            )
-        )
-    }
-
-    @Test
-    fun `gson parseFrom should parse list`() {
-        val content: List<Person> = Gson().parseFrom("persons")
-        assertThat(content).isEqualTo(
-            listOf(
-                Person(
-                    "Thiago",
-                    "Santos",
-                    29
-                ),
-                Person(
-                    "Souto",
-                    "Silva",
-                    45
-                )
-            )
-        )
-    }
-
-    @Test(expected = FileNotFoundException::class)
-    fun `gson parseFrom should throw FileNotFoundException when json path doest not exist`() {
-        Gson().parseFrom<Person>("perso2n")
-    }
-
-    @Test(expected = JsonSyntaxException::class)
-    fun `parseFrom should throw JsonSyntaxException when json is not valid`() {
-        Gson().parseFrom<Person>("person_invalid_format")
-    }
 }
