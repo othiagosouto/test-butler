@@ -65,7 +65,8 @@ class MoshiExtKtTest {
                     "Thiago",
                     "Santos",
                     29
-                ), PersonMoshi(
+                ),
+                PersonMoshi(
                     "Souto",
                     "Silva",
                     45
@@ -84,7 +85,8 @@ class MoshiExtKtTest {
                     "Thiago",
                     "Santos",
                     29
-                ), PersonMoshi(
+                ),
+                PersonMoshi(
                     "Souto",
                     "Silva",
                     45

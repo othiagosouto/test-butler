@@ -1,8 +1,8 @@
 package dev.thiagosouto.butler.file.gson
 
-import dev.thiagosouto.butler.file.readFile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import dev.thiagosouto.butler.file.readFile
 
 /**
  * A method that will convert a json file to a [T] object

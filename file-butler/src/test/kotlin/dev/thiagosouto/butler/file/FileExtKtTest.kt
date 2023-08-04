@@ -17,4 +17,3 @@ class FileExtKtTest {
         readFile("file.tx22t")
     }
 }
-

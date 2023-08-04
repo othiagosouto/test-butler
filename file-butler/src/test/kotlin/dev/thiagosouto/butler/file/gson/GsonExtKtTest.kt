@@ -58,7 +58,8 @@ class GsonExtKtTest {
                     "Thiago",
                     "Santos",
                     29
-                ), Person(
+                ),
+                Person(
                     "Souto",
                     "Silva",
                     45

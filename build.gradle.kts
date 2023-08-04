@@ -14,6 +14,10 @@ buildscript {
     }
 }
 
+plugins {
+    id("io.gitlab.arturbosch.detekt") version "1.23.1"
+}
+
 allprojects {
     repositories {
         mavenCentral()
@@ -23,6 +27,10 @@ allprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     apply(plugin = "org.jetbrains.dokka")
+
+    dependencies {
+        detektPlugins(Deps.core.ktlintDetekt)
+    }
 }
 
 task<Delete>("clean") {

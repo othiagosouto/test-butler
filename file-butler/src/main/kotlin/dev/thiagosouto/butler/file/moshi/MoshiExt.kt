@@ -1,9 +1,9 @@
 package dev.thiagosouto.butler.file.moshi
 
-import dev.thiagosouto.butler.file.readFile
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import dev.thiagosouto.butler.file.readFile
 
 /**
  * A standalone method that will convert a json file to a [T] object
