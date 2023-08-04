@@ -5,14 +5,19 @@ class Test {
 }
 
 class Core {
+    val androidGradlePlugin = "com.android.tools.build:gradle:8.0.2"
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
+    val detektPlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0"
+    val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"
+
 }
 
 class Utils {
-    val dokka = "org.jetbrains.dokka:kotlin-as-java-plugin:1.8.10"
+    val dokkaPlugin = "org.jetbrains.dokka:kotlin-as-java-plugin:1.8.10"
     val gson = "com.google.code.gson:gson:2.10.1"
     val moshi = "com.squareup.moshi:moshi:1.15.0"
     val moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
+
 }
 
 object Deps {

@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace "com.github.othiagosouto.testbutler"
+    namespace "dev.thiagosouto.testbutler"
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.github.othiagosouto.testbutler"
+        applicationId "dev.thiagosouto.testbutler"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

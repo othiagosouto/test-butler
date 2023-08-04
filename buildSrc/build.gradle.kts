@@ -1,13 +1,15 @@
+import org.gradle.kotlin.dsl.`kotlin-dsl`
+
+repositories {
+    google()
+    mavenCentral()
+}
+
 plugins {
     `kotlin-dsl`
 }
 
-repositories {
-    mavenCentral()
-    google()
-    jcenter()
-}
-
-dependencies {
-    implementation(gradleApi())
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

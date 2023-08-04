@@ -1,7 +1,7 @@
 plugins {
     id 'kotlin'
     id 'kotlin-kapt'
-    id "org.jetbrains.dokka"
+    id "org.jetbrains.dokka" version "1.8.20"
     id "maven-publish"
     id "signing"
 }
@@ -25,7 +25,7 @@ dependencies {
     testImplementation(Deps.testing.truth)
     testImplementation(Deps.testing.jUnit)
     kaptTest(Deps.utils.moshCodeGen)
-    dokkaHtmlPlugin(Deps.utils.dokka)
+    dokkaHtmlPlugin(Deps.utils.dokkaPlugin)
 }
 sourceSets {
     main.kotlin.srcDirs += 'src/main/kotlin'
@@ -40,7 +40,7 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-group = "com.github.othiagosouto"
+group = "dev.thiagosouto"
 version = "0.1.5-SNAPSHOT"
 
 def ossrhUsername = System.env.SONATYPE_NEXUS_USERNAME
