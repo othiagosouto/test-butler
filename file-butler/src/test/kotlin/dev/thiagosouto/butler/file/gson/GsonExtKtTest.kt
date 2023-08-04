@@ -77,4 +77,3 @@ class GsonExtKtTest {
         Gson().parseFrom<Person>("person_invalid_format")
     }
 }
-
