@@ -2,6 +2,7 @@ plugins {
     id 'kotlin'
     id 'kotlin-kapt'
     id "maven-publish"
+    id 'java-library'
     id "signing"
 }
 
@@ -37,7 +38,7 @@ artifacts {
 }
 
 group = "dev.thiagosouto"
-version = "0.1.7-SNAPSHOT"
+version = "0.1.8-SNAPSHOT"
 
 
 java {
@@ -48,6 +49,7 @@ java {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            from(components.java)
             pom {
                 name = "file-butler"
                 description = "A library to support TDD practice "
