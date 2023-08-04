@@ -1,3 +1,3 @@
 include(":file-butler")
-include (":app")
+include(":webserver")
 rootProject.name = "Test butler"
