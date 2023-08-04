@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: "Publish file-butler to artifactory"
+    name: "Publish to nexus"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,7 +23,7 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
       - name: Build with Gradle
-        run: ./gradlew :file-butler:build --no-daemon
+        run: ./gradlew build --no-daemon
 
       - name: Publish with Gradle
         env:
