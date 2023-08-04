@@ -15,18 +15,6 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
-detekt {
-    toolVersion = "1.23.1"
-
-    source = files(
-            "src/main/kotlin",
-            "src/test/kotlin",
-            "gensrc/main/kotlin",
-            "gensrc/test/kotlin"
-    )
-    config.setFrom(files(rootProject.file("configs/detekt.yaml")))
-    buildUponDefaultConfig = true
-}
 
 dependencies {
     implementation(Deps.core.kotlin)
