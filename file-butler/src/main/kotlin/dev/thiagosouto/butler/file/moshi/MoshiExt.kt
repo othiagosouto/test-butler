@@ -35,7 +35,7 @@ inline fun <reified T : Any> Moshi.parseFrom(path: String): T =
  * @return object deserialized as [List]<[T]>
  */
 inline fun <reified T> parseList(moshi: Moshi, path: String): List<T> {
-    val file = readFile(T::class.java.classLoader,"$path.json")
+    val file = readFile(T::class.java.classLoader, "$path.json")
     val adapter: JsonAdapter<List<T>> = moshi.adapter(
         Types.newParameterizedType(
             MutableList::class.java,
