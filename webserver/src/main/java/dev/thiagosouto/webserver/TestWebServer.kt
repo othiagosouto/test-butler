@@ -77,7 +77,7 @@ class TestWebServer {
     fun url(path: String = "") = server.url(path).toString()
 
     private fun String.openFile(): String {
-       return readFile(TestWebServer::class.java.classLoader, this)
+        return readFile(TestWebServer::class.java.classLoader, this)
     }
 
     private fun String.getContentType(): String {

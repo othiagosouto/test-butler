@@ -12,9 +12,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-repositories {
-    google()
-    mavenCentral()
+dependencies {
+    api(Deps.square.mockWebserver)
+    api(Deps.square.okhttp)
+    api(project(":file-butler"))
 }
 
 group = "dev.thiagosouto"
