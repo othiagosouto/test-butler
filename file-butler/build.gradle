@@ -38,8 +38,7 @@ artifacts {
 }
 
 group = "dev.thiagosouto"
-version = "0.1.11-SNAPSHOT"
-
+version = rootProject.file("VERSION.txt").text
 
 java {
     withJavadocJar()
@@ -72,7 +71,7 @@ publishing {
                 scm {
                     connection = "scm:git:git://github.com/othiagosouto/test-butler.git/"
                     developerConnection = "scm:git:ssh://github.com:othiagosouto/test-butler.git"
-                    url = "https://github.com/othiagosouto/test-butler"
+                    url = "https://github.com/othiagosouto/test-butler/file-butler"
                 }
             }
         }

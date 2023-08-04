@@ -1,4 +1,3 @@
-
 class Test {
     val jUnit = "junit:junit:4.13.1"
     val truth = "com.google.truth:truth:1.1"
@@ -21,9 +20,15 @@ class Utils {
 
 }
 
+class Square {
+    val mockWebserver = "com.squareup.okhttp3:mockwebserver:4.9.3"
+    val okhttp = "com.squareup.okhttp3:okhttp:4.9.3"
+}
+
 object Deps {
     val core = Core()
     val testing = Test()
     val utils = Utils()
+    val square = Square()
 }
 
