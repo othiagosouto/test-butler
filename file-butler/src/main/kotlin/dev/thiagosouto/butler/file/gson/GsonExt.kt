@@ -12,7 +12,7 @@ import dev.thiagosouto.butler.file.readFile
  * @return object deserialized as type [T]
  */
 inline fun <reified T> parse(gson: Gson, path: String): T {
-    val file = readFile("$path.json")
+    val file = readFile(T::class.java.classLoader, "$path.json")
     return gson.fromJson(file, object : TypeToken<T>() {}.type)
 }
 
