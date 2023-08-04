@@ -7,7 +7,7 @@ class Test {
 class Core {
     val androidGradlePlugin = "com.android.tools.build:gradle:8.0.2"
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
-    val detektPlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0"
+    val detektPlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.1"
     val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"
 
 }

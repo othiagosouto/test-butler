@@ -15,15 +15,21 @@ buildscript {
     }
 }
 
-
-
 allprojects {
     repositories {
         mavenCentral()
         google()
     }
+    apply(plugin = "io.gitlab.arturbosch.detekt")
+    apply(plugin = "org.jetbrains.dokka")
+}
+
+plugins{
+    id("io.gitlab.arturbosch.detekt") version "1.23.1" apply false
+    id("org.jetbrains.dokka") version "1.8.20" apply false
 }
 
 task<Delete>("clean") {
     delete(rootProject.buildDir)
 }
+
