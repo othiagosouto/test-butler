@@ -16,7 +16,6 @@ class Utils {
     val gson = "com.google.code.gson:gson:2.10.1"
     val moshi = "com.squareup.moshi:moshi:1.15.0"
     val moshCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
-
 }
 
 class Square {

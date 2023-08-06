@@ -16,7 +16,7 @@ class TestWebServer {
     /**
      * map with Relative path to json path to mock the http responses
      */
-    var mapping: Map<String, String> = emptyMap()
+    var mapping: Map<String, Response> = emptyMap()
 
     /**
      * Start the webserver
@@ -38,17 +38,18 @@ class TestWebServer {
     fun initDispatcher() {
         server.dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
-                println(request.path)
-                val path = mapping[request.path]
-                return if (path?.isImage() == true) {
-                    imageResponse(path)
-                } else {
-                    val body = path?.openFile()
-                    body?.let { MockResponse().setBody(body) }
-                        ?: MockResponse().setResponseCode(
-                            HTTP_BAD_REQUEST
-                        )
-                }
+                val response = mapping[request.path]
+                return if (response != null) {
+                    if (response.path.isImage()) {
+                        imageResponse(response.path)
+                    } else {
+                        val body = response.path.openFile()
+                        body.let { MockResponse().setBody(body).setResponseCode(response.httpCode) }
+                            ?: MockResponse().setResponseCode(
+                                HTTP_BAD_REQUEST
+                            )
+                    }
+                } else { throw UrlNotMockedException(request.path!!) }
             }
         }
     }
@@ -93,4 +94,6 @@ class TestWebServer {
         private const val HTTP_BAD_REQUEST = 400
         private const val DEFAULT_PORT = 53863
     }
+
+    data class Response(val path: String, val httpCode: Int = 200)
 }
