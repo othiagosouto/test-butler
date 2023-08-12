@@ -1,0 +1,40 @@
+[versions]
+detekt = "1.23.1"
+kotlin = "1.8.10"
+compose = "1.4.3"
+composeBom = "2023.06.01"
+okhttp = "4.9.3"
+moshi = "1.15.0"
+kotlin-serialization-json = "1.5.1"
+junit = "4.13.2"
+truth = "1.1"
+gson = "2.10.1"
+
+[libraries]
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+mockWebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
+kotlin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+
+
+android-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+android-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+android-compose-material = { group = "androidx.compose.material", name = "material" }
+android-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+#tests
+test-junit = { module = "junit:junit", version.ref = "junit" }
+test-android-compose = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+test-truth = { module = "com.google.truth:truth", version.ref = "truth" }
+[bundles]
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+kotlin-gradle-plugin = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
