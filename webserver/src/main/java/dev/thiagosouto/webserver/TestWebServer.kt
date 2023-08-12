@@ -14,11 +14,6 @@ class TestWebServer {
     private val server = MockWebServer()
 
     /**
-     * map with Relative path to json path to mock the http responses
-     */
-    var mapping: Map<String, Response> = emptyMap()
-
-    /**
      * Start the webserver
      */
     fun start(port: Int = DEFAULT_PORT) {
@@ -34,20 +29,19 @@ class TestWebServer {
 
     /**
      * initialize the dispatcher for the webserver
+     *
+     * @param responses is a map with the configuration for the dispatcher
      */
-    fun initDispatcher() {
+    fun init(responses: Map<String, Response>) {
         server.dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
-                val response = mapping[request.path]
+                val response = responses[request.path]
                 return if (response != null) {
                     if (response.path.isImage()) {
                         imageResponse(response.path)
                     } else {
                         val body = response.path.openFile()
                         body.let { MockResponse().setBody(body).setResponseCode(response.httpCode) }
-                            ?: MockResponse().setResponseCode(
-                                HTTP_BAD_REQUEST
-                            )
                     }
                 } else { throw UrlNotMockedException(request.path!!) }
             }
@@ -88,12 +82,17 @@ class TestWebServer {
         }
     }
 
-    companion object {
-        private val IMAGES_EXTENSIONS = arrayOf(".jpeg", ".jpg")
-        private const val HTTP_SUCCESS = 200
-        private const val HTTP_BAD_REQUEST = 400
-        private const val DEFAULT_PORT = 53863
-    }
-
+    /**
+     * Response from request
+     *
+     * @property path is the relative for the url
+     * @property httpCode is the expected http code to be return as result for the url
+     */
     data class Response(val path: String, val httpCode: Int = 200)
+
+    private companion object {
+        val IMAGES_EXTENSIONS = arrayOf(".jpeg", ".jpg")
+        const val HTTP_SUCCESS = 200
+        const val DEFAULT_PORT = 53863
+    }
 }
