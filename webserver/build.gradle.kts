@@ -1,10 +1,8 @@
-
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
     id("maven-publish")
     id("signing")
-    id("kotlin")
 }
 
 java {
@@ -13,8 +11,8 @@ java {
 }
 
 dependencies {
-    api(Deps.square.mockWebserver)
-    api(Deps.square.okhttp)
+    api(libs.mockWebserver)
+    api(libs.okhttp)
     api(project(":file-butler"))
 }
 
@@ -30,6 +28,9 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            groupId = "dev.thiagosouto"
+            artifactId = "webserver"
+            version = rootProject.file("VERSION.txt").readText()
 
             pom {
                 name.set("webserver")
