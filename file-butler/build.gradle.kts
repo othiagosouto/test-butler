@@ -29,6 +29,7 @@ sourceSets.getByName("test") {
 }
 
 group = "dev.thiagosouto"
+version = rootProject.file("VERSION.txt").readText()
 
 java {
     withJavadocJar()
@@ -39,6 +40,9 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            groupId = "dev.thiagosouto"
+            artifactId = "file-butler"
+            version = rootProject.file("VERSION.txt").readText()
             pom {
                 packaging = "jar"
                 name.set("file-butler")
