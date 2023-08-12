@@ -15,8 +15,6 @@ dependencies {
     testImplementation(libs.test.truth)
     testImplementation(libs.test.junit)
     kaptTest(libs.moshi.codegen)
-
-    dokkaHtmlPlugin(libs.kotlin.dokka)
 }
 
 sourceSets.getByName("main") {

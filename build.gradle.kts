@@ -1,20 +1,7 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath(Deps.core.kotlinGradlePlugin)
-        classpath(Deps.core.detektPlugin)
-        classpath(Deps.utils.dokkaPlugin)
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
 plugins {
-    id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.kotlin.gradle.plugin)
+    alias(libs.plugins.kotlin.dokka) apply false
 }
 
 allprojects {
@@ -24,14 +11,12 @@ allprojects {
         gradlePluginPortal()
     }
 
-    apply(plugin = "io.gitlab.arturbosch.detekt")
-    apply(plugin = "org.jetbrains.dokka")
+    apply(plugin = rootProject.libs.plugins.detekt.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.kotlin.dokka.get().pluginId)
 
     dependencies {
-        detektPlugins(Deps.core.ktlintDetekt)
-    }
-}
 
-task<Delete>("clean") {
-    delete(rootProject.buildDir)
+        this.dependencies.add("detektPlugins", provider { libs.detekt.formatting.get() })
+        this.dependencies.add("dokkaHtmlPlugin", provider { libs.plugins.kotlin.dokka.get() })
+    }
 }
