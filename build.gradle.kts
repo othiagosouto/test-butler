@@ -15,7 +15,7 @@ allprojects {
     apply(plugin = rootProject.libs.plugins.kotlin.dokka.get().pluginId)
 
     dependencies {
-
+        //https://github.com/gradle/gradle/issues/22468#issuecomment-1632409263
         this.dependencies.add("detektPlugins", provider { libs.detekt.formatting.get() })
         this.dependencies.add("dokkaHtmlPlugin", provider { libs.plugins.kotlin.dokka.get() })
     }
