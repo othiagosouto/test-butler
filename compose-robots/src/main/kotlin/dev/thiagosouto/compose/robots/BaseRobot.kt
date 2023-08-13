@@ -7,6 +7,9 @@ import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithTag
 
+/**
+ * Base Robot that enables some pre-established features
+ */
 abstract class BaseRobot(protected val rule: ComposeTestRule) :
     Retryable by RetryRobot(rule) {
 
