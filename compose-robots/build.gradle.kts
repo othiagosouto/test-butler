@@ -5,7 +5,7 @@ plugins {
     id("signing")
 }
 
-group = "dev.thiagosouto"
+group = rootProject.file("GROUP_ID.txt").readText()
 version = rootProject.file("VERSION.txt").readText()
 
 android {
@@ -41,9 +41,10 @@ android {
 dependencies {
     compileOnly(platform(libs.android.compose.bom))
     compileOnly(libs.test.android.compose)
+    compileOnly(project(":webserver"))
 }
 
-group = "dev.thiagosouto"
+group = rootProject.file("GROUP_ID.txt").readText()
 version = rootProject.file("VERSION.txt").readText()
 
 publishing {
@@ -52,7 +53,7 @@ publishing {
             afterEvaluate {
                 from(components["release"])
             }
-            groupId = "dev.thiagosouto"
+            groupId = rootProject.file("GROUP_ID.txt").readText()
             artifactId = "compose-robots"
             version = rootProject.file("VERSION.txt").readText()
 

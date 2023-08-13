@@ -26,7 +26,7 @@ sourceSets.getByName("test") {
     java.srcDir("src/test/kotlin")
 }
 
-group = "dev.thiagosouto"
+group = rootProject.file("GROUP_ID.txt").readText()
 version = rootProject.file("VERSION.txt").readText()
 
 java {
@@ -38,7 +38,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
-            groupId = "dev.thiagosouto"
+            groupId = rootProject.file("GROUP_ID.txt").readText()
             artifactId = "file-butler"
             version = rootProject.file("VERSION.txt").readText()
             pom {

@@ -16,7 +16,7 @@ dependencies {
     api(project(":file-butler"))
 }
 
-group = "dev.thiagosouto"
+group = rootProject.file("GROUP_ID.txt").readText()
 version = rootProject.file("VERSION.txt").readText()
 
 java {
@@ -28,7 +28,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
-            groupId = "dev.thiagosouto"
+            groupId = rootProject.file("GROUP_ID.txt").readText()
             artifactId = "webserver"
             version = rootProject.file("VERSION.txt").readText()
 
