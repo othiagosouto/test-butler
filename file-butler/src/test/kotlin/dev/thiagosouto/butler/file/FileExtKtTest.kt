@@ -4,7 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import java.io.FileNotFoundException
 
-class FileExtKtTest {
+internal class FileExtKtTest {
 
     @Test
     fun `should return file content as string`() {

@@ -6,7 +6,7 @@ import com.google.gson.JsonSyntaxException
 import org.junit.Test
 import java.io.FileNotFoundException
 
-class GsonExtKtTest {
+internal class GsonExtKtTest {
 
     @Test
     fun `should return person from json`() {
