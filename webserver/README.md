@@ -1,8 +1,5 @@
 WebServer
 =====
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/51ebadc06dc849089dd24f4d6ca213b8)](https://app.codacy.com/gh/othiagosouto/test-butler/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-
 Web Server is a library aiming for speeding up your test development.
 
 ### How to use?

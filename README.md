@@ -1,5 +1,8 @@
 Test-butler
 =====
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/51ebadc06dc849089dd24f4d6ca213b8)](https://app.codacy.com/gh/othiagosouto/test-butler/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 Test-butler is a project that provides libraries to improve test development when working with TDD.
 
 
