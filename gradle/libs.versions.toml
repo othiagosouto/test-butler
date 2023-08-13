@@ -9,6 +9,8 @@ kotlin-serialization-json = "1.5.1"
 junit = "4.13.2"
 truth = "1.1"
 gson = "2.10.1"
+gradleplugin = "8.0.2"
+composeCompiler = "1.4.3"
 
 [libraries]
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -31,7 +33,9 @@ test-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-kotlin-gradle-plugin = {id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-gradle-plugin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "gradleplugin" }
