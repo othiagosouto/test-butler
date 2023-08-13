@@ -12,9 +12,9 @@ interface Retryable {
      */
     fun retry(retryConfig: RetryConfig, func: ComposeTestRule.() -> Unit)
 
-
     /**
-     * Re-tries [func] using [retryConfig] parameters with a delay provided by [delay], and executes [errorHandling] when fails
+     * Re-tries [func] using [retryConfig] parameters with a delay provided by [delay],
+     * and executes [errorHandling] when fails
      */
     fun retryWithDelay(
         retryConfig: RetryConfig = RetryConfig(),
