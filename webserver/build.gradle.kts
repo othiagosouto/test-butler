@@ -31,7 +31,6 @@ publishing {
             groupId = "dev.thiagosouto"
             artifactId = "webserver"
             version = rootProject.file("VERSION.txt").readText()
-            artifact("$buildDir/outputs/aar/compose-robots-release.aar")
 
             pom {
                 name.set("webserver")
