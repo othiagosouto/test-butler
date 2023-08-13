@@ -55,7 +55,6 @@ publishing {
             groupId = "dev.thiagosouto"
             artifactId = "compose-robots"
             version = rootProject.file("VERSION.txt").readText()
-            artifact("$buildDir/outputs/aar/compose-robots-release.aar")
 
             pom {
                 packaging = "aar"
