@@ -5,9 +5,6 @@ plugins {
     id("signing")
 }
 
-group = rootProject.file("GROUP_ID.txt").readText()
-version = rootProject.file("VERSION.txt").readText()
-
 android {
     namespace = "dev.thiagosouto.compose.robots"
     compileSdk = 34
@@ -44,8 +41,11 @@ dependencies {
     compileOnly(project(":webserver"))
 }
 
-group = rootProject.file("GROUP_ID.txt").readText()
-version = rootProject.file("VERSION.txt").readText()
+val groupIdToPublish =  rootProject.file("GROUP_ID.txt").readText()
+val versionToPublish =  rootProject.file("VERSION.txt").readText()
+
+group = groupIdToPublish
+version = versionToPublish
 
 publishing {
     publications {
@@ -53,9 +53,9 @@ publishing {
             afterEvaluate {
                 from(components["release"])
             }
-            groupId = rootProject.file("GROUP_ID.txt").readText()
+            groupId = groupIdToPublish
             artifactId = "compose-robots"
-            version = rootProject.file("VERSION.txt").readText()
+            version = versionToPublish
 
             pom {
                 packaging = "aar"
@@ -87,12 +87,11 @@ publishing {
 
     repositories {
         maven {
-            val version = rootProject.file("VERSION.txt").readText()
             val releasesRepoUrl =
                 "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
 
-            url = uri(if (version.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            url = uri(if (versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
 
             credentials {
                 username = System.getenv("ORG_GRADLE_PROJECT_sonatypeUsername")

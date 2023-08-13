@@ -26,8 +26,11 @@ sourceSets.getByName("test") {
     java.srcDir("src/test/kotlin")
 }
 
-group = rootProject.file("GROUP_ID.txt").readText()
-version = rootProject.file("VERSION.txt").readText()
+val groupIdToPublish =  rootProject.file("GROUP_ID.txt").readText()
+val versionToPublish =  rootProject.file("VERSION.txt").readText()
+
+group = groupIdToPublish
+version = versionToPublish
 
 java {
     withJavadocJar()
@@ -38,9 +41,9 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
-            groupId = rootProject.file("GROUP_ID.txt").readText()
+            groupId = groupIdToPublish
             artifactId = "file-butler"
-            version = rootProject.file("VERSION.txt").readText()
+            version = versionToPublish
             pom {
                 packaging = "jar"
                 name.set("file-butler")
@@ -71,11 +74,10 @@ publishing {
 
     repositories {
         maven {
-            val version = rootProject.file("VERSION.txt").readText()
             val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
 
-            url = uri(if(version.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            url = uri(if(versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
 
             credentials {
                 username = System.getenv("ORG_GRADLE_PROJECT_sonatypeUsername")
