@@ -22,7 +22,7 @@ abstract class BaseRobot(protected val rule: ComposeTestRule) :
         rule.waitUntil(LONG_TIMEOUT) { isValid { this.assertIsNotDisplayed() } }
     }
 
-    @Suppress("SwallowedException") // or use complexity.LargeClass
+    @Suppress("SwallowedException")
     private fun isValid(passedFunction: () -> Unit): Boolean =
         try {
             passedFunction()
