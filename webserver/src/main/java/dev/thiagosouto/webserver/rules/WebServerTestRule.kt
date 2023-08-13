@@ -4,6 +4,9 @@ import dev.thiagosouto.webserver.TestWebServer
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
+/**
+ * Rule accountable to initialize [TestWebServer]
+ */
 class WebServerTestRule(private val responses: Map<String, TestWebServer.Response>) :
     TestWatcher() {
     private val testWebServer = TestWebServer()
