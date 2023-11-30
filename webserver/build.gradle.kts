@@ -1,8 +1,7 @@
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
-    id("maven-publish")
-    id("signing")
+    alias(libs.plugins.kotlin.gradle)
+    id(libs.plugins.signing.plugin.get().pluginId)
+    id(libs.plugins.maven.publish.get().pluginId)
 }
 
 java {

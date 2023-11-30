@@ -1,9 +1,8 @@
 plugins {
-    id("kotlin")
-    id("kotlin-kapt")
-    id("maven-publish")
-    id("java-library")
-    id("signing")
+    alias(libs.plugins.kotlin.gradle)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+    id(libs.plugins.maven.publish.get().pluginId)
+    id(libs.plugins.signing.plugin.get().pluginId)
 }
 
 dependencies {

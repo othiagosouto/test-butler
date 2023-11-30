@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.detekt)
-    alias(libs.plugins.kotlin.gradle.plugin)
+    alias(libs.plugins.kotlin.gradle)
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.dokka) apply false
