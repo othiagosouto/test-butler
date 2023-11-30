@@ -41,7 +41,11 @@ class TestWebServer {
                         imageResponse(response.path)
                     } else {
                         val body = response.path.openFile()
-                        body.let { MockResponse().setBody(body).setResponseCode(response.httpCode) }
+                        body.let {
+                            MockResponse().setBody(body)
+                                .setHeader("content-type", "application/json")
+                                .setResponseCode(response.httpCode)
+                        }
                     }
                 } else { throw UrlNotMockedException(request.path!!) }
             }
