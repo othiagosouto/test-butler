@@ -5,6 +5,7 @@ import androidx.compose.ui.test.junit4.ComposeTestRule
 import dev.thiagosouto.compose.robots.exceptions.RetryLimitException
 
 internal class RetryRobot(private val rule: ComposeTestRule) : Retryable {
+
     override fun retry(retryConfig: Retryable.RetryConfig, func: ComposeTestRule.() -> Unit) {
         try {
             rule.func()
@@ -18,7 +19,7 @@ internal class RetryRobot(private val rule: ComposeTestRule) : Retryable {
     private fun retryException(
         e: Throwable,
         retryConfig: Retryable.RetryConfig = Retryable.RetryConfig(),
-        func: ComposeTestRule.() -> Unit
+        func: ComposeTestRule.() -> Unit,
     ) {
         if (retryConfig.count == retryConfig.limit) {
             throw e
@@ -48,7 +49,7 @@ internal class RetryRobot(private val rule: ComposeTestRule) : Retryable {
         e: Throwable,
         retryConfig: Retryable.RetryConfig = Retryable.RetryConfig(),
         func: ComposeTestRule.() -> Unit,
-        errorHandling: ComposeTestRule.() -> Unit
+        errorHandling: ComposeTestRule.() -> Unit,
     ) {
         if (retryConfig.count == retryConfig.limit) {
             throw RetryLimitException(retryConfig.count, e)

@@ -6,7 +6,6 @@ import androidx.compose.ui.test.junit4.ComposeTestRule
  * Robot that specifies retry behavior for when an assertion fails
  */
 interface Retryable {
-
     /**
      * Re-tries [func] using [retryConfig] parameters
      */
@@ -20,7 +19,7 @@ interface Retryable {
         retryConfig: RetryConfig = RetryConfig(),
         delay: Long = 50L,
         errorHandling: ComposeTestRule.() -> Unit = { },
-        func: ComposeTestRule.() -> Unit
+        func: ComposeTestRule.() -> Unit,
     )
 
     /**

@@ -7,7 +7,6 @@ import org.junit.Test
 import java.io.FileNotFoundException
 
 internal class SerializationExtKtTest {
-
     private val json = Json
 
     @Test
@@ -38,8 +37,8 @@ internal class SerializationExtKtTest {
         assertThat(content).isEqualTo(
             listOf(
                 PersonSerialization("Thiago", "Santos", 29),
-                PersonSerialization("Souto", "Silva", 45)
-            )
+                PersonSerialization("Souto", "Silva", 45),
+            ),
         )
     }
 
@@ -49,8 +48,8 @@ internal class SerializationExtKtTest {
         assertThat(content).isEqualTo(
             listOf(
                 PersonSerialization("Thiago", "Santos", 29),
-                PersonSerialization("Souto", "Silva", 45)
-            )
+                PersonSerialization("Souto", "Silva", 45),
+            ),
         )
     }
 

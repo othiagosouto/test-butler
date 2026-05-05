@@ -42,12 +42,15 @@ class TestWebServer {
                     } else {
                         val body = response.path.openFile()
                         body.let {
-                            MockResponse().setBody(body)
+                            MockResponse()
+                                .setBody(body)
                                 .setHeader("content-type", "application/json")
                                 .setResponseCode(response.httpCode)
                         }
                     }
-                } else { throw UrlNotMockedException(request.path!!) }
+                } else {
+                    throw UrlNotMockedException(request.path!!)
+                }
             }
         }
     }
@@ -56,7 +59,9 @@ class TestWebServer {
 
     private fun imageResponse(path: String): MockResponse {
         val responseBody = path.getBinaryFileAsBuffer()
-        return MockResponse().setResponseCode(HTTP_SUCCESS).addHeader(path.getContentType())
+        return MockResponse()
+            .setResponseCode(HTTP_SUCCESS)
+            .addHeader(path.getContentType())
             .setBody(responseBody)
     }
 
@@ -75,15 +80,11 @@ class TestWebServer {
      */
     fun url(path: String = "") = server.url(path).toString()
 
-    private fun String.openFile(): String {
-        return readFile(TestWebServer::class.java.classLoader, this)
-    }
+    private fun String.openFile(): String = readFile(TestWebServer::class.java.classLoader, this)
 
-    private fun String.getContentType(): String {
-        return when {
-            this.contains(".jpg") -> "Content-Type:image/jpg"
-            else -> "Content-Type:image/jpeg"
-        }
+    private fun String.getContentType(): String = when {
+        this.contains(".jpg") -> "Content-Type:image/jpg"
+        else -> "Content-Type:image/jpeg"
     }
 
     /**

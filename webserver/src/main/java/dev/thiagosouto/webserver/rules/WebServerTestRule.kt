@@ -7,8 +7,7 @@ import org.junit.runner.Description
 /**
  * Rule accountable to initialize [TestWebServer]
  */
-class WebServerTestRule(private val responses: Map<String, TestWebServer.Response>) :
-    TestWatcher() {
+class WebServerTestRule(private val responses: Map<String, TestWebServer.Response>) : TestWatcher() {
     private val testWebServer = TestWebServer()
 
     override fun starting(description: Description?) {

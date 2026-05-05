@@ -10,8 +10,7 @@ import androidx.compose.ui.test.onNodeWithTag
 /**
  * Base Robot that enables some pre-established features
  */
-abstract class BaseRobot(protected val rule: ComposeTestRule) :
-    Retryable by RetryRobot(rule) {
+abstract class BaseRobot(protected val rule: ComposeTestRule) : Retryable by RetryRobot(rule) {
 
     protected fun SemanticsNodeInteraction.waitUntilVisible() = apply {
         rule.waitUntil(LONG_TIMEOUT) { isValid { this.assertIsDisplayed() } }
@@ -26,15 +25,14 @@ abstract class BaseRobot(protected val rule: ComposeTestRule) :
     }
 
     @Suppress("SwallowedException")
-    private fun isValid(passedFunction: () -> Unit): Boolean =
-        try {
-            passedFunction()
-            true
-        } catch (ex1: ComposeTimeoutException) {
-            false
-        } catch (e: java.lang.AssertionError) {
-            false
-        }
+    private fun isValid(passedFunction: () -> Unit): Boolean = try {
+        passedFunction()
+        true
+    } catch (ex1: ComposeTimeoutException) {
+        false
+    } catch (e: java.lang.AssertionError) {
+        false
+    }
 
     fun applyComposable(func: ComposeTestRule.() -> Unit) = apply {
         rule.func()

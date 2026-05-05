@@ -5,7 +5,6 @@ import org.junit.Test
 import java.io.FileNotFoundException
 
 internal class FileExtKtTest {
-
     @Test
     fun `should return file content as string`() {
         val content: String = readFile(this::class.java.classLoader, "file.txt")

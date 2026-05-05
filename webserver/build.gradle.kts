@@ -1,7 +1,15 @@
 plugins {
     alias(libs.plugins.kotlin.gradle)
-    id(libs.plugins.signing.plugin.get().pluginId)
-    id(libs.plugins.maven.publish.get().pluginId)
+    id(
+        libs.plugins.signing.plugin
+            .get()
+            .pluginId,
+    )
+    id(
+        libs.plugins.maven.publish
+            .get()
+            .pluginId,
+    )
 }
 
 java {
@@ -15,7 +23,7 @@ dependencies {
     api(project(":file-butler"))
 }
 
-val groupIdToPublish =  providers.gradleProperty("GROUP_ID").get()
+val groupIdToPublish = providers.gradleProperty("GROUP_ID").get()
 val versionToPublish = providers.gradleProperty("VERSION").get()
 
 group = groupIdToPublish
@@ -41,8 +49,8 @@ publishing {
 
                 licenses {
                     license {
-                        name.set( "The Apache License, Version 2.0")
-                        url.set( "http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
                 developers {
@@ -65,8 +73,8 @@ publishing {
         maven {
             val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-            url = uri(if(versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
-            credentials{
+            url = uri(if (versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            credentials {
                 username = System.getenv("ORG_GRADLE_PROJECT_sonatypeUsername")
                 password = System.getenv("ORG_GRADLE_PROJECT_sonatypePassword")
             }

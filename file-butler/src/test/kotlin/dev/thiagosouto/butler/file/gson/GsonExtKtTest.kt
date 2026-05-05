@@ -7,7 +7,6 @@ import org.junit.Test
 import java.io.FileNotFoundException
 
 internal class GsonExtKtTest {
-
     @Test
     fun `should return person from json`() {
         val content: Person =
@@ -16,8 +15,8 @@ internal class GsonExtKtTest {
             Person(
                 "Thiago",
                 "Santos",
-                29
-            )
+                29,
+            ),
         )
     }
 
@@ -25,7 +24,7 @@ internal class GsonExtKtTest {
     fun `should throw JsonSyntaxException when json is not valid`() {
         parse<Person>(
             Gson(),
-            "person_invalid_format"
+            "person_invalid_format",
         )
     }
 
@@ -33,7 +32,7 @@ internal class GsonExtKtTest {
     fun `should throw FileNotFoundException when json path doest not exist`() {
         parse<Person>(
             Gson(),
-            "perso2n"
+            "perso2n",
         )
     }
 }

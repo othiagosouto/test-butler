@@ -1,7 +1,15 @@
 plugins {
     alias(libs.plugins.android.library)
-    id(libs.plugins.signing.plugin.get().pluginId)
-    id(libs.plugins.maven.publish.get().pluginId)
+    id(
+        libs.plugins.signing.plugin
+            .get()
+            .pluginId,
+    )
+    id(
+        libs.plugins.maven.publish
+            .get()
+            .pluginId,
+    )
     alias(libs.plugins.compose.compiler)
 }
 
@@ -38,7 +46,7 @@ dependencies {
     compileOnly(project(":webserver"))
 }
 
-val groupIdToPublish =  providers.gradleProperty("GROUP_ID").get()
+val groupIdToPublish = providers.gradleProperty("GROUP_ID").get()
 val versionToPublish = providers.gradleProperty("VERSION").get()
 
 group = groupIdToPublish
@@ -97,7 +105,6 @@ publishing {
         }
     }
 }
-
 
 signing {
     val signingKey: String? by project

@@ -9,13 +9,10 @@ plugins {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.gson)
-    implementation(libs.moshi)
-    ksp(libs.moshi.codegen)
     implementation(libs.kotlin.serialization.json)
 
     testImplementation(libs.test.truth)
     testImplementation(libs.test.junit)
-    kspTest(libs.moshi.codegen)
 }
 
 sourceSets.getByName("main") {
@@ -26,7 +23,7 @@ sourceSets.getByName("test") {
     java.srcDir("src/test/java")
     java.srcDir("src/test/kotlin")
 }
-val groupIdToPublish =  providers.gradleProperty("GROUP_ID").get()
+val groupIdToPublish = providers.gradleProperty("GROUP_ID").get()
 val versionToPublish = providers.gradleProperty("VERSION").get()
 
 group = groupIdToPublish
@@ -85,7 +82,7 @@ publishing {
             val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
 
-            url = uri(if(versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            url = uri(if (versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
 
             credentials {
                 username = System.getenv("ORG_GRADLE_PROJECT_sonatypeUsername")
