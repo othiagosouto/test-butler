@@ -15,10 +15,20 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = rootProject.libs.plugins.detekt.get().pluginId)
-    apply(plugin = rootProject.libs.plugins.kotlin.dokka.get().pluginId)
+    apply(
+        plugin =
+            rootProject.libs.plugins.detekt
+                .get()
+                .pluginId,
+    )
+    apply(
+        plugin =
+            rootProject.libs.plugins.kotlin.dokka
+                .get()
+                .pluginId,
+    )
 
     dependencies {
-        "detektPlugins"(rootProject.libs.detekt.formatting)
+        "detektPlugins"(rootProject.libs.detekt.ktlint)
     }
 }
