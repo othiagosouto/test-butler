@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     id(libs.plugins.signing.plugin.get().pluginId)
     id(libs.plugins.maven.publish.get().pluginId)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {

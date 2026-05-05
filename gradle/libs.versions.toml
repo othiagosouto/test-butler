@@ -1,16 +1,17 @@
 [versions]
-detekt = "1.23.1"
-kotlin = "1.8.10"
+detekt = "1.23.8"
+kotlin = "2.3.21"
 compose = "1.4.3"
-composeBom = "2023.06.01"
-okhttp = "4.9.3"
-moshi = "1.15.0"
+composeBom = "2026.04.01"
+okhttp = "5.3.2"
+moshi = "1.15.2"
 kotlin-serialization-json = "1.5.1"
 junit = "4.13.2"
-truth = "1.1"
-gson = "2.10.1"
-gradleplugin = "8.0.2"
+truth = "1.4.5"
+gson = "2.14.0"
+gradleplugin = "9.0.1"
 composeCompiler = "1.4.3"
+dokka = "2.2.0"
 
 [libraries]
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -34,10 +35,11 @@ test-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-gradle = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "gradleplugin" }
 signing-plugin = { id = "signing" }
 maven-publish = { id = "maven-publish" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
