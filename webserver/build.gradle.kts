@@ -15,8 +15,8 @@ dependencies {
     api(project(":file-butler"))
 }
 
-val groupIdToPublish =  rootProject.file("GROUP_ID.txt").readText()
-val versionToPublish =  rootProject.file("VERSION.txt").readText()
+val groupIdToPublish =  providers.gradleProperty("GROUP_ID").get()
+val versionToPublish = providers.gradleProperty("VERSION").get()
 
 group = groupIdToPublish
 version = versionToPublish
@@ -65,7 +65,7 @@ publishing {
         maven {
             val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-            url = uri(if((versionToPublish as String).contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            url = uri(if(versionToPublish.contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
             credentials{
                 username = System.getenv("ORG_GRADLE_PROJECT_sonatypeUsername")
                 password = System.getenv("ORG_GRADLE_PROJECT_sonatypePassword")

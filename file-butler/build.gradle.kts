@@ -26,9 +26,8 @@ sourceSets.getByName("test") {
     java.srcDir("src/test/java")
     java.srcDir("src/test/kotlin")
 }
-
-val groupIdToPublish =  rootProject.file("GROUP_ID.txt").readText()
-val versionToPublish =  rootProject.file("VERSION.txt").readText()
+val groupIdToPublish =  providers.gradleProperty("GROUP_ID").get()
+val versionToPublish = providers.gradleProperty("VERSION").get()
 
 group = groupIdToPublish
 version = versionToPublish
