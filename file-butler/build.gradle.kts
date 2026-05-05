@@ -1,19 +1,21 @@
 plugins {
     alias(libs.plugins.kotlin.gradle)
-    id(libs.plugins.kotlin.kapt.get().pluginId)
-    id(libs.plugins.maven.publish.get().pluginId)
-    id(libs.plugins.signing.plugin.get().pluginId)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.maven.publish)
+    alias(libs.plugins.signing.plugin)
 }
 
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.gson)
     implementation(libs.moshi)
-    kapt(libs.moshi.codegen)
+    ksp(libs.moshi.codegen)
+    implementation(libs.kotlin.serialization.json)
 
     testImplementation(libs.test.truth)
     testImplementation(libs.test.junit)
-    kaptTest(libs.moshi.codegen)
+    kspTest(libs.moshi.codegen)
 }
 
 sourceSets.getByName("main") {

@@ -24,9 +24,6 @@ android {
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-    }
     publishing {
         singleVariant("release") {
             withJavadocJar()

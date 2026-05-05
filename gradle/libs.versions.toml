@@ -1,7 +1,6 @@
 [versions]
 detekt = "1.23.8"
 kotlin = "2.3.21"
-compose = "1.4.3"
 composeBom = "2026.04.01"
 okhttp = "5.3.2"
 moshi = "1.15.2"
@@ -10,8 +9,8 @@ junit = "4.13.2"
 truth = "1.4.5"
 gson = "2.14.0"
 gradleplugin = "9.0.1"
-composeCompiler = "1.4.3"
 dokka = "2.2.0"
+kspPlugin = "2.3.7"
 
 [libraries]
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -21,6 +20,7 @@ okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 mockWebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
 
 android-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 android-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
@@ -40,6 +40,7 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "gradleplugin" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin" }
 signing-plugin = { id = "signing" }
 maven-publish = { id = "maven-publish" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
